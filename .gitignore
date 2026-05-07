@@ -1,0 +1,32 @@
+## IntelliJ IDEA ##
+/.idea/
+/out/
+/classes/
+/*.iml
+
+## Eclipse ##
+/eclipse/
+/bin/
+/*.launch
+/.settings/
+/.metadata
+/.classpath
+/.project
+
+## VSCode ##
+/.vscode/
+
+## Netbeans ##
+/.nb-gradle/
+/.nb-gradle-properties/
+
+## Gradle ##
+**/build/
+**/.gradle/
+
+## Other ##
+/.kotlin/
+**/run/
+/.DS_Store
+Thumbs.db
+*.log
