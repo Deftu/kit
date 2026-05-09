@@ -9,8 +9,8 @@ import java.io.ByteArrayOutputStream
 import javax.inject.Inject
 
 fun Project.execIgnorable(vararg command: String): String {
-    return providers.of(IgnorableCommandValueSource::class) {
-        parameters.commands = command.toList()
+    return providers.of(IgnorableCommandValueSource::class) { spec ->
+        spec.parameters.commands = command.toList()
     }.get()
 }
 
@@ -25,11 +25,11 @@ internal abstract class IgnorableCommandValueSource : ValueSource<String, Ignora
     override fun obtain(): String? {
         try {
             val output = ByteArrayOutputStream()
-            execOperations.exec {
-                commandLine(parameters.commands)
-                isIgnoreExitValue = true
-                standardOutput = output
-                errorOutput = ByteArrayOutputStream() // Suppress error output
+            execOperations.exec { spec ->
+                spec.commandLine(parameters.commands)
+                spec.isIgnoreExitValue = true
+                spec.standardOutput = output
+                spec.errorOutput = ByteArrayOutputStream() // Suppress error output
             }
 
             return output.toString().trim()

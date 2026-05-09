@@ -6,8 +6,8 @@ import org.gradle.kotlin.dsl.create
 
 fun MavenArtifactRepository.applyBasicCredentials(username: String, password: String) {
     authentication.create<BasicAuthentication>("basic")
-    credentials {
-        this.username = username
-        this.password = password
+    credentials { creds ->
+        creds.username = username
+        creds.password = password
     }
 }
